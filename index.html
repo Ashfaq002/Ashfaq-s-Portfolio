@@ -299,8 +299,11 @@
     
     
     <script>
-        const text1 = "Hi there, it's Ashfaq Ahamed";
+       const text1 = "Hi there, it's Ashfaq Ahamed";
         const text2 = "I'm a Biomedical Engineer";
+        const text3 = "I'm a Web Developer";
+        const text4 = "I'm a Python Developer";
+    
         let i = 0;
         let j = 0;
         function typeText1() {
@@ -317,9 +320,53 @@
                 document.getElementById("sub-text").textContent += text2.charAt(j);
                 j++;
                 setTimeout(typeText2, 100);
+            }else{
+                setTimeout(transitionText, 1000);
             }
         }
-        window.onload = typeText1;
+        function transitionText(){
+            const subText = document.getElementById("sub-text");
+            //fade out effect 
+            subText.style.opacity = 0;
+
+            setTimeout(() => {
+                subText.textContent ="I'm a";
+                j = 0;
+                typeText3();
+
+                subText.style.opacity = 1;
+            },1000)
+        }
+        function typeText3() {
+            if (j < text3.length - 5) { // Skip "I'm a " part
+                document.getElementById("sub-text").textContent += text3.charAt(j + 5);
+                j++;
+                setTimeout(typeText3, 100);
+            }else{
+                setTimeout(transistionText2, 1000);
+            }
+        }
+        function transistionText2(){
+            const subText = document.getElementById("sub-text");
+
+            subText.style.opacity = 0;
+
+            setTimeout(() => {
+                subText.textContent = "I'm a";
+                j = 0;
+                typeText4();
+                subText.style.opacity = 1;
+            },1000)
+        }
+        function typeText4(){
+            if(j < text4.length - 5){
+                document.getElementById("sub-text").textContent += text4.charAt(j + 5);
+                j++;
+                setTimeout(typeText4, 100);
+            }
+        }
+
+
 
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(event) {
